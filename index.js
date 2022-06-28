@@ -14,6 +14,14 @@ window.addEventListener('resize',function(){
   canvas.height = window.innerHeight
   init()
 })
+
+window.addEventListener('mousemove', function(e){
+  mouse.x = e.clientX
+  mouse.y = e.clientY
+})
+
+let maxRadius = 60
+
 class Ball {
   constructor(x,y,dx,dy,radius,color){
     this.x = x
@@ -21,6 +29,7 @@ class Ball {
     this.y = y
     this.dy = dy
     this.radius = radius
+    this.minRadius = radius
     this.color = color
   }
   draw(){
@@ -38,8 +47,16 @@ class Ball {
     }
     this.x += this.dx
     this.y += this.dy
-    
     this.draw()
+    if (mouse.x - this.x < 70 && mouse.x - this.x > -70 && mouse.y - this.y < 70 && mouse.y - this.y > -70){
+      if (this.radius < maxRadius){
+        this.radius += 1
+      }
+    console.log('hi')
+    }
+    else if (this.radius > this.minRadius){
+      this.radius -= 1
+    }
   }
 }
 
