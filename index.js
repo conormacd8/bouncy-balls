@@ -3,6 +3,17 @@ const c = canvas.getContext("2d");
 
 canvas.width = window.innerWidth
 canvas.height = window.innerHeight
+
+const mouse = {
+  x:undefined,
+  y:undefined
+}
+
+window.addEventListener('resize',function(){
+  canvas.width = window.innerWidth
+  canvas.height = window.innerHeight
+  init()
+})
 class Ball {
   constructor(x,y,dx,dy,radius,color){
     this.x = x
@@ -34,8 +45,12 @@ class Ball {
 
 let ballsArray = []
 
+
+
+function init(){
+ballsArray = []
 for (let i = 0; i < 50; i++) {
-  let radius = (Math.random()*20)+30
+  let radius = (Math.random()*20)+10
   let x = Math.random() * (canvas.width - radius *2) + radius
   let y = Math.random() * (canvas.height - radius *2) + radius
   let dx = (Math.random()-0.5)*10
@@ -44,8 +59,7 @@ for (let i = 0; i < 50; i++) {
   let color = `rgba(${Math.floor(Math.random() * 255)},${Math.floor(Math.random() * 255)},${Math.floor(Math.random() * 255)},${alpha})`
   ballsArray.push(new Ball(x,y,dx,dy,radius,color))
 }
-
-
+}
 
 function animate(){
   requestAnimationFrame(animate)
@@ -56,3 +70,4 @@ function animate(){
 }
 
 animate()
+init()
