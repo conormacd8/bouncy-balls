@@ -32,23 +32,27 @@ class Ball {
   }
 }
 
-let x = 100
-let y = 100
-let dx = 5
-let dy = 5
-let radius = 30
-let color = 'red'
-let ball = new Ball(x,y,dx,dy,radius,color)
+let ballsArray = []
 
-
-
+for (let i = 0; i < 50; i++) {
+  let radius = (Math.random()*20)+10
+  let x = (Math.random()* (canvas.width+radius*2))+radius
+  let y = (Math.random()* (canvas.height+radius*2))+radius
+  let dx = (Math.random()-0.5)*4
+  let dy = (Math.random()-0.5)*4
+  let alpha = (Math.random())
+  let color = `rgba(${Math.floor(Math.random() * 255)},${Math.floor(Math.random() * 255)},${Math.floor(Math.random() * 255)},${alpha})`
+  ballsArray.push(new Ball(x,y,dx,dy,radius,color))
+}
 
 
 
 function animate(){
   requestAnimationFrame(animate)
   c.clearRect(0,0,innerWidth,innerHeight)
-  ball.update()
+  ballsArray.forEach(ball => {
+    ball.update()
+  })
 }
 
 animate()
