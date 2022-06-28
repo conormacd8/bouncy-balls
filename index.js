@@ -76,7 +76,8 @@ for (let i = 0; i < 50; i++) {
   let y = Math.random() * (canvas.height - radius *2) + radius
   let dx = (Math.random()-0.5)*3
   let dy = (Math.random()-0.5)*3
-  let alpha = (Math.random())
+  let alpha = Math.ceil(Math.random()*10)/10
+  console.log(alpha)
   let color = `rgba(${Math.floor(Math.random() * 255)},${Math.floor(Math.random() * 255)},${Math.floor(Math.random() * 255)},${alpha})`
   ballsArray.push(new Ball(x,y,dx,dy,radius,color))
 }
