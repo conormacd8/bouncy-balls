@@ -45,14 +45,18 @@ class Ball {
     if (this.y + this.radius > window.innerHeight || this.y - this.radius < 0){
       this.dy = -this.dy
     }
+    else{
+      this.dy += .2
+    }
     this.x += this.dx
     this.y += this.dy
     this.draw()
+
+
     if (mouse.x - this.x < 70 && mouse.x - this.x > -70 && mouse.y - this.y < 70 && mouse.y - this.y > -70){
       if (this.radius < maxRadius){
         this.radius += 1
       }
-    console.log('hi')
     }
     else if (this.radius > this.minRadius){
       this.radius -= 1
@@ -70,8 +74,8 @@ for (let i = 0; i < 50; i++) {
   let radius = (Math.random()*20)+10
   let x = Math.random() * (canvas.width - radius *2) + radius
   let y = Math.random() * (canvas.height - radius *2) + radius
-  let dx = (Math.random()-0.5)*10
-  let dy = (Math.random()-0.5)*10
+  let dx = (Math.random()-0.5)*3
+  let dy = (Math.random()-0.5)*3
   let alpha = (Math.random())
   let color = `rgba(${Math.floor(Math.random() * 255)},${Math.floor(Math.random() * 255)},${Math.floor(Math.random() * 255)},${alpha})`
   ballsArray.push(new Ball(x,y,dx,dy,radius,color))
