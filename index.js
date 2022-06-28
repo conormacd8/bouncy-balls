@@ -46,7 +46,7 @@ class Ball {
       this.dy = -this.dy
     }
     else{
-      this.dy += .2
+      this.dy += .3
     }
     this.x += this.dx
     this.y += this.dy
@@ -55,7 +55,7 @@ class Ball {
 
     if (mouse.x - this.x < 70 && mouse.x - this.x > -70 && mouse.y - this.y < 70 && mouse.y - this.y > -70){
       if (this.radius < maxRadius){
-        this.radius += 3
+        this.radius += 5
       }
     }
     else if (this.radius > this.minRadius){
