@@ -55,7 +55,7 @@ class Ball {
 
     if (mouse.x - this.x < 70 && mouse.x - this.x > -70 && mouse.y - this.y < 70 && mouse.y - this.y > -70){
       if (this.radius < maxRadius){
-        this.radius += 1
+        this.radius += 3
       }
     }
     else if (this.radius > this.minRadius){
@@ -70,7 +70,7 @@ let ballsArray = []
 
 function init(){
 ballsArray = []
-for (let i = 0; i < 50; i++) {
+for (let i = 0; i < 80; i++) {
   let radius = (Math.random()*20)+10
   let x = Math.random() * (canvas.width - radius *2) + radius
   let y = Math.random() * (canvas.height - radius *2) + radius
